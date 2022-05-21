@@ -7,10 +7,10 @@ apt update; apt upgrade -y; apt install docker.io -y
 useradd -m -G docker -s /bin/bash $PREADMIN
 
 # Creates ssh folder and sets permission
-mkdir /home/$PREADMIN/.ssh
-chmod 700 /home/$PREADMIN/.ssh
-touch /home/$PREADMIN/.ssh/authorized_keys
-chmod 600 /home/$PREADMIN/.ssh/authorized_keys
+mkdir /home/${PREADMIN}/.ssh
+chmod 700 /home/${PREADMIN}/.ssh
+touch /home/${PREADMIN}/.ssh/authorized_keys
+chmod 600 /home/${PREADMIN}/.ssh/authorized_keys
 chown $PREADMIN:$PREADMIN -R /home/$PREADMIN/.ssh
 
 # Sets password for newly created admin user
@@ -19,7 +19,7 @@ echo -e "$PASS\n$PASS\n" | passwd $PREADMIN
 # Generates sudoers file
 echo -e 'root ALL=(ALL) ALL\n$PREADMIN ALL=(ALL) ALL' > /etc/sudoers
 
-echo -e "$PUBLICKEY" > /home/$PREADMIN/.ssh/authorized_keys
+echo -e "$PUBLICKEY" > /home/${PREADMIN}/.ssh/authorized_keys
 
 # Generates sshd config
 echo -e 'PermitRootLogin no\nPubkeyAuthentication yes\nAuthorizedKeysFile .ssh/authorized_keys\nPasswordAuthentication no\nChallengeResponseAuthentication no\nUsePAM yes\nSubsystem sftp /usr/lib/ssh/sftp-server' > /etc/ssh/sshd_config
