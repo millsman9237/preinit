@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Updates the system and installs docker
-apt update; apt upgrade -y; apt install docker.io -y
+apt update; apt upgrade -y; apt install docker.io openssh-server -y
 
 # Creates admin user
 useradd -m -G docker -s /bin/bash $PREADMIN && echo -e "$PASS\n$PASS\n" | passwd $PREADMIN
