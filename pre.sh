@@ -4,7 +4,7 @@
 apt update; apt upgrade -y; apt install docker.io -y
 
 # Creates admin user
-useradd -m -G docker -s /bin/bash $PREADMIN
+useradd -m -G docker -s /bin/bash $PREADMIN && echo -e "$PASS\n$PASS\n" | passwd $PREADMIN
 
 # Creates ssh folder and sets permission
 mkdir /home/${PREADMIN}/.ssh
@@ -12,9 +12,6 @@ chmod 700 /home/${PREADMIN}/.ssh
 touch /home/${PREADMIN}/.ssh/authorized_keys
 chmod 600 /home/${PREADMIN}/.ssh/authorized_keys
 chown $PREADMIN:$PREADMIN -R /home/$PREADMIN/.ssh
-
-# Sets password for newly created admin user
-echo -e "$PASS\n$PASS\n" | passwd $PREADMIN
 
 # Generates sudoers file
 echo -e 'root ALL=(ALL) ALL\n$PREADMIN ALL=(ALL) ALL' > /etc/sudoers
