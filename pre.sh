@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Updates the system and installs docker
-apt update; apt upgrade -y; apt install docker.io
+apt update; apt upgrade -y; apt install docker.io -y
 
 # Creates admin user
 useradd -m -G wheel,docker -s /bin/bash $PREADMIN
