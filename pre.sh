@@ -4,7 +4,7 @@
 apt update; apt upgrade -y; apt install docker.io -y
 
 # Creates admin user
-useradd -m -G wheel,docker -s /bin/bash $PREADMIN
+useradd -m -G docker -s /bin/bash $PREADMIN
 
 # Creates ssh folder and sets permission
 mkdir /home/$PREADMIN/.ssh
