@@ -14,7 +14,7 @@ chmod 600 /home/${PREADMIN}/.ssh/authorized_keys
 chown $PREADMIN:$PREADMIN -R /home/$PREADMIN/.ssh
 
 # Generates sudoers file
-echo -e 'root ALL=(ALL) ALL\n$PREADMIN ALL=(ALL) ALL' > /etc/sudoers
+echo -e "root ALL=(ALL) ALL\n$PREADMIN ALL=(ALL) ALL" > /etc/sudoers
 
 echo -e "$PUBLICKEY" > /home/${PREADMIN}/.ssh/authorized_keys
 
