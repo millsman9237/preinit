@@ -21,6 +21,8 @@ echo -e "$PUBLICKEY" > /home/${PREADMIN}/.ssh/authorized_keys
 # Generates sshd config
 echo -e 'PermitRootLogin no\nPubkeyAuthentication yes\nAuthorizedKeysFile .ssh/authorized_keys\nPasswordAuthentication no\nChallengeResponseAuthentication no\nUsePAM yes\nSubsystem sftp /usr/lib/ssh/sftp-server' > /etc/ssh/sshd_config
 # Restarts sshd
+systemctl enable sshd
+systemctl start sshd
 systemctl restart sshd
 
 # Initializes Presearch auto updater and node
